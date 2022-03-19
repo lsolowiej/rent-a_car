@@ -1,0 +1,14 @@
+{% extends "base.html" %}
+
+
+{% block content %}
+    <h2 class="mt-4">Login</h2>
+    <form method="post" class="py-4">
+        {% csrf_token %}
+        {% include "forms/form_base_bs5.html" %}
+        <button type="submit" class="btn btn-primary">Submit</button>
+    <small class="text-muted ml-4">
+        <a href="{%  url 'password_reset' %}">I forgot my password</a>
+    </small>
+    </form>
+{% endblock %}

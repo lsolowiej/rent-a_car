@@ -1,0 +1,23 @@
+
+
+{% extends 'base.html' %}
+
+{% block content %}
+    <div class="container py-4">
+        <div class="container">
+            <img class="float-start account-img me-4" src="{{ cars.image.url }}">
+            <h2>{{ cars.name }}</h2>
+            <small>{{ cars.year_of_production }} - {{ cars.engine }} <i class="fa fa-star"></i></small>
+            <hr>
+            <p>{{ cars.description }}</p>
+            <small>Description length: {{ cars.description|length }}</small>
+            <hr>
+            {% if user.is_authenticated %}
+            <a class="btn btn-primary" href="{% url "viewer:update_car" cars.id %}">Update</a>
+            <a class="btn btn-danger" href="{% url "viewer:delete_car" cars.id %}">Delete</a>
+            {% endif %}
+        </div>
+<a href="{% url 'viewer:cars' %}"><h2>Back to cars list</h2></a>
+    </div>
+{% endblock %}
+

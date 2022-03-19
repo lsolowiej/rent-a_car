@@ -1,0 +1,107 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rent A Car</title>
+    <link rel="stylesheet" href="{% static 'main.css' %}">
+    <link rel="stylesheet" href="{% static 'reset.css' %}">
+
+
+</head>
+<body>
+    <header class="header">
+        <img src="https://image.shutterstock.com/image-vector/car-vector-icon-on-white-260nw-364548260.jpg" class="logo" alt="Gryfek">
+    <nav class="nav">
+        <ul class="nav-list">
+            <li class="nav-list-item">
+                <a class="nav-link" href="#cars">Our Cars</a>
+            </li>
+            <li class="nav-list-item">
+                <a class="nav-link" href="#clients">Our Clients</a>
+            </li>
+            <li class="nav-list-item">
+                <a class="nav-link" href="#find">Find a Car</a>
+            </li>
+            <li class="nav-list-item">
+                <a class="nav-link"href="#offer">Offer Your Car</a>
+            </li>
+            <li class="nav-list-item">
+                <a class="nav-link" href="#contact">Contact</a>
+            </li>
+        </ul>
+            <a href="pages/login.html" class="myButton">Login</a>
+    </nav>
+    </header>
+
+
+
+<main class="main-content">
+    <section id="cars" class="section cars">
+    <a href="{% url 'viewer:cars' %}" class="carsButton">Cars</a>
+    </section>
+
+    <section id="clients" class="section clients">
+    <h2>Clients</h2>
+    </section>
+
+    <section id="find" class="section find">
+    <h2>Find a Car</h2>
+    </section>
+
+    <section id="offer" class="section offer">
+    <h2>Ofer Your Car</h2>
+    <a href="{% url 'viewer:create_car' %}" class="addCarButton">Add a car</a>
+    </section>
+
+    <section id="contact" class="section contact">
+    <h2>Contact</h2>
+    <title>Add Map</title>
+
+    <style type="text/css">
+      /* Set the size of the div element that contains the map */
+      #map {
+        height: 400px;
+        /* The height is 400 pixels */
+        width: 40%;
+        /* The width is the width of the web page */
+      }
+    </style>
+    <script>
+      // Initialize and add the map
+      function initMap() {
+        // The location of Uluru
+        const uluru = { lat: 54.406, lng: 18.595 };
+        // The map, centered at Uluru
+        const map = new google.maps.Map(document.getElementById("map"), {
+          zoom: 10,
+          center: uluru,
+        });
+        // The marker, positioned at Uluru
+        const marker = new google.maps.Marker({
+          position: uluru,
+          map: map,
+        });
+      }
+    </script>
+  </head>
+  <body>
+    <h6>Znajdziesz nas tutaj</h6>
+    <!--The div element for the map -->
+    <div id="map"></div>
+
+    <!-- Async script executes immediately and must be after any DOM elements used in callback. -->
+    <script
+      src="https://maps.googleapis.com/maps/api/js?key=AIzaSyA4NOcHFQzKY8h6Xt9_aIqROUtkStI7tEQ&callback=initMap&libraries=&v=weekly"
+      async
+    ></script>
+  </body>
+    </section>
+</main>
+</body>
+</html>
